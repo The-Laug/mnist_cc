@@ -14,6 +14,7 @@ def visualize(model_checkpoint: str, figure_name: str = "embeddings.png") -> Non
     # Load checkpoint onto the same device as the model to avoid device mismatch errors
     model.load_state_dict(torch.load(model_checkpoint, map_location=DEVICE))
     model.eval()
+    # Replace final layer with identity to get embeddings
     model.fc = torch.nn.Identity()
 
     test_images = torch.load("data/processed/test_images.pt")
@@ -21,6 +22,7 @@ def visualize(model_checkpoint: str, figure_name: str = "embeddings.png") -> Non
     test_dataset = torch.utils.data.TensorDataset(test_images, test_target)
 
     embeddings, targets = [], []
+    # Set no_grad for inference mode to save memory and computations
     with torch.inference_mode():
         for batch in torch.utils.data.DataLoader(test_dataset, batch_size=32):
             images, target = batch
@@ -32,9 +34,10 @@ def visualize(model_checkpoint: str, figure_name: str = "embeddings.png") -> Non
         embeddings = torch.cat(embeddings).numpy()
         targets = torch.cat(targets).numpy()
 
-    if embeddings.shape[1] > 500:  # Reduce dimensionality for large embeddings
+    if embeddings.shape[1] > 500:  # Reduce dimensionality for large embeddings using PCA
         pca = PCA(n_components=100)
         embeddings = pca.fit_transform(embeddings)
+    # Now, run TSNE for final 2D visualization
     tsne = TSNE(n_components=2)
     embeddings = tsne.fit_transform(embeddings)
 
