@@ -14,7 +14,7 @@ class MyAwesomeModel(nn.Module):
         self.fc2 = nn.Linear(128, 10)
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(0.25)
-        
+
     def forward(self, x):
         x = self.relu(self.conv1(x))
         x = self.pool(x)
@@ -25,10 +25,9 @@ class MyAwesomeModel(nn.Module):
         x = self.dropout(x)
         x = self.fc2(x)
         return x
-        
-        
+
+
 if __name__ == "__main__":
-    
     print("=== Model Test ===")
     model = MyAwesomeModel()
     print(model)

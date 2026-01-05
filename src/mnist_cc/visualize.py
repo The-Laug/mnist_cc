@@ -9,7 +9,14 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.ba
 
 
 def visualize(model_checkpoint: str, figure_name: str = "embeddings.png") -> None:
-    """Visualize model predictions."""
+    """Visualize model predictions.
+    args:
+        model_checkpoint: Path to model checkpoint.
+        figure_name: Name of the output figure file.
+    returns:
+        None
+
+    """
     model: torch.nn.Module = MyAwesomeModel().to(DEVICE)
     # Load checkpoint onto the same device as the model to avoid device mismatch errors
     model.load_state_dict(torch.load(model_checkpoint, map_location=DEVICE))
