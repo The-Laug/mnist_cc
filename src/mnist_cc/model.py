@@ -1,6 +1,6 @@
 from torch import nn
 import torch
-
+import pytest
 
 class MyAwesomeModel(nn.Module):
     """My awesome model."""
@@ -16,6 +16,10 @@ class MyAwesomeModel(nn.Module):
         self.dropout = nn.Dropout(0.25)
 
     def forward(self, x):
+        if x.ndim != 4:
+            raise ValueError(f"Expected input to be a 4D tensor, got {x.ndim}D tensor instead.")
+        if x.shape[2:] != (28, 28):
+            raise ValueError(f"Expected each sample to have shape [1, 28, 28], got {list(x.shape[1:])} instead.")
         x = self.relu(self.conv1(x))
         x = self.pool(x)
         x = self.relu(self.conv2(x))

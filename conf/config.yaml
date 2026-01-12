@@ -1,0 +1,8 @@
+hyperparameters:
+  learning_rate: 0.001
+  batch_size: 128
+  latent_dim: 5
+  hidden_dim: 400
+  x_dim: 784
+  epochs: 7
+  seed: 42

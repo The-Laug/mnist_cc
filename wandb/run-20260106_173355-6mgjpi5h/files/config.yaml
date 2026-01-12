@@ -1,0 +1,63 @@
+_wandb:
+    value:
+        cli_version: 0.23.1
+        e:
+            3ubplf2ovvg8igdp0820c2vq2q1730n4:
+                apple:
+                    ecpuCores: 4
+                    gpuCores: 8
+                    memoryGb: 8
+                    name: Apple M1
+                    pcpuCores: 4
+                    ramTotalBytes: "8589934592"
+                    swapTotalBytes: "6442450944"
+                codePath: src/mnist_cc/train.py
+                codePathLocal: src/mnist_cc/train.py
+                cpu_count: 8
+                cpu_count_logical: 8
+                disk:
+                    /:
+                        total: "245107195904"
+                        used: "237534945280"
+                email: lauge.arn@gmail.com
+                executable: /Users/lauge/Desktop/MLops/mnist_cc/.venv/bin/python3
+                git:
+                    commit: 2a8cf515cea534fd9dc3c1e62665b90173ff9463
+                    remote: https://github.com/The-Laug/mnist_cc.git
+                host: Lauges-MacBook-Pro.local
+                memory:
+                    total: "8589934592"
+                os: macOS-15.3.2-arm64-arm-64bit
+                program: /Users/lauge/Desktop/MLops/mnist_cc/src/mnist_cc/train.py
+                python: CPython 3.12.3
+                root: /Users/lauge/Desktop/MLops/mnist_cc
+                startedAt: "2026-01-06T16:33:55.466464Z"
+                writerId: 3ubplf2ovvg8igdp0820c2vq2q1730n4
+        m: []
+        python_version: 3.12.3
+        t:
+            "1":
+                - 1
+                - 50
+            "2":
+                - 1
+                - 50
+            "3":
+                - 2
+                - 16
+            "4": 3.12.3
+            "5": 0.23.1
+            "12": 0.23.1
+            "13": darwin-arm64
+architecture:
+    value: CNN
+batch_size:
+    value: 128
+dataset:
+    value: Corrupted MNIST
+epochs:
+    value: 7
+learning_rate:
+    value: 0.001
+seed:
+    value: 42
